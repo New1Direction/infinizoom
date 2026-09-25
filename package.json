@@ -1,0 +1,16 @@
+{
+  "name":"infinizoom",
+  "version":"0.2.0",
+  "type":"module",
+  "scripts":{
+    "infinizoom":"bun run src/cli.ts infinizoom",
+    "new":"bun run src/cli.ts new",
+    "validate":"bun run src/cli.ts validate",
+    "inspect":"bun run src/cli.ts inspect",
+    "server":"bun run src/server.ts",
+    "build":"bun run src/build.ts",
+    "check":"tsc --noEmit && bun run src/cli.ts validate projects/example/project.json"
+  },
+  "dependencies":{"three":"^0.180.0"},
+  "devDependencies":{"@types/bun":"latest","@types/three":"^0.180.0","typescript":"^5.8.3"}
+}
