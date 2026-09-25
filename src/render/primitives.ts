@@ -1,0 +1,5 @@
+import * as THREE from "three";import type{ZoomNode}from"../schema.ts";
+export interface RenderCtx{node:ZoomNode;index:number;root:THREE.Group;position:THREE.Vector3;time:number;accent:THREE.Color}
+export function addMesh(root:THREE.Group,g:THREE.BufferGeometry,color:THREE.ColorRepresentation,p:THREE.Vector3,scale=1,metalness=.08){const m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color,roughness:.58,metalness}));m.position.copy(p);m.scale.setScalar(scale);root.add(m);return m}
+export function wire(root:THREE.Group,pts:THREE.Vector3[],color:THREE.ColorRepresentation,opacity=.65){const l=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color,transparent:true,opacity}));root.add(l);return l}
+export function satellites(c:RenderCtx,count=24,radius=1.8,size=.07){for(let j=0;j<count;j++){const a=j*2.399963,p=c.position.clone().add(new THREE.Vector3(Math.cos(a)*radius,Math.sin(a*1.7)*.5,Math.sin(a)*radius));addMesh(c.root,new THREE.BoxGeometry(size,size,size),c.accent,p,1,0)}}
